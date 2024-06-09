@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR authentication</title>
+        <!-- icons -->
+        <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+        <!-- fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>    <!-- normalize -->
+        <link rel="stylesheet" href="./normalize.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="./main.css">
+        <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
+        <link rel="stylesheet" href="./HRauthentication.css">
+</head>
+<body>
+    <form action="login" method="post" class="form">
+        <h4>authenticate</h4>
+        <hr class="under-line">
+        <div class="form-row">
+            <label for="username" class="form-label">UserName</label>
+            <input type="text" 
+            id="username"
+            name="username"
+            required
+            class="form-input">
+        </div>
+        <div class="form-row">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" 
+            id="password"
+            name="password"
+            required
+            class="form-input">
+        </div>
+        <button id="submitButton" type="submit" class="btn btn-block btn-teritiary">Submit</button>
+    </form>
+    
+
+</body>
+</html>
