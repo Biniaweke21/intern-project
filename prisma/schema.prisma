@@ -3,22 +3,48 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id         String   @id @default(cuid()) @map("_id")
-  email      String   @unique
-  name       String
-  password   String
-  resetToken String?
-  role       Role     @default(USER)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(HMR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id          String          @id @default(cuid())
+  firstName   String
+  lastName    String
+  country     String
+  city        String
+  phone       String
+  email       String          @unique
+  jobDetailId String?
+  JobDetail   EmployeeDetail? @relation(fields: [jobDetailId], references: [id])
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model EmployeeDetail {
+  id              String     @id @default(cuid())
+  position        String
+  department      String
+  baseSalary      Float
+  salaryFrequency Float
+  dateOfHire      DateTime
+  employeeId      String     @unique
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  Employee        Employee[]
 }
 
 enum Role {
-  USER
+  HMR
   ADMIN
 }

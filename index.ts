@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 
 // register api routes
 app.use("/api/users", userRouter);
+app.use("/api/employee", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/resources", authMiddleware, protectedRouter);
 
