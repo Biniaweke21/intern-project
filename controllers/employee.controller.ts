@@ -13,21 +13,19 @@ export const getEmployee = async (req: Request, res: Response) => {
 };
 
 export const createEmployee = async (req: Request, res: Response) => {
-  const { firstName, lastName, country, city, phone, email, jobDetailId } =
-    req.body;
+  const { firstName, lastName, country, city, phone, email } = req.body;
   const employee = await prisma.employee.create({
-    data: { firstName, lastName, country, city, phone, email, jobDetailId },
+    data: { firstName, lastName, country, city, phone, email },
   });
   res.json(employee);
 };
 
 export const updateEmployee = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { firstName, lastName, country, city, phone, email, jobDetailId } =
-    req.body;
+  const { firstName, lastName, country, city, phone, email } = req.body;
   const employee = await prisma.employee.update({
     where: { id },
-    data: { firstName, lastName, country, city, phone, email, jobDetailId },
+    data: { firstName, lastName, country, city, phone, email },
   });
   res.json(employee);
 };

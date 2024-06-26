@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "bun --watch index.ts",
-    "build": "bunx index.ts"
+    "build": "bunx index.ts",
+    "start": "concurrently \"bun run server\" \"bun run client\"",
+    "server": "bun  dev",
+    "client": "cd view && bun dev"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
