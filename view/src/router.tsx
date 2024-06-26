@@ -1,9 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { SigninForm } from './components/shared/signin-form';
 import AppLayout from './layout';
-import ErrorPage from './pages/error-page';
-import EmployeePage from './pages/employee-page';
-import AuthPage from './pages/auth-page';
 import DashboardPage from './pages/dashboard-page';
+import EmployeePage from './pages/employee-page';
+import ErrorPage from './pages/error-page';
+import RegistrationForm from './components/shared/registration-form';
 
 
 export const router = createBrowserRouter([
@@ -11,30 +12,34 @@ export const router = createBrowserRouter([
         path: '/',
         element: <AppLayout />,
         errorElement: <ErrorPage />,
-        children: [
-            {
-                path: "/employee",
-                element: <EmployeePage />,
-                children: [
-                    {
-                        path: "/new",
-                        element: <EmployeePage />
-                    },
-                    {
-                        path: "/edit/:id",
-                        element: <EmployeePage />
-                    },
-                ]
+        children: [{
+            path: "/",
+            element: <DashboardPage />
+        }
+            ,
+        {
+            path: "employee",
+            element: <RegistrationForm />,
+            children: [
+                {
+                    path: "new",
+                    element: <RegistrationForm />
+                },
+                {
+                    path: "edit/:id",
+                    element: <EmployeePage />
+                },
+            ]
 
-            },
-            {
-                path: "/dashboard",
-                element: <DashboardPage />,
-            },
-            {
-                path: "/auth",
-                element: <AuthPage />
-            },
+        },
+        {
+            path: "dashboard",
+            element: <DashboardPage />,
+        },
+        {
+            path: "auth",
+            element: <SigninForm />
+        },
         ]
     }
 ])
