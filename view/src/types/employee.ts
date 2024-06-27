@@ -10,3 +10,13 @@ export type EmployeeType = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type UserType = {
+  id: string;
+  email: string;
+  name: string;
+  password: string;
+  role: "HMR" | "ADMIN";
+  createdAt: Date;
+  updatedAt: Date;
+};

@@ -51,7 +51,7 @@ export function AlertDialogForm({
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>{cancelLabel}</AlertDialogCancel>
-                    <AlertDialogAction onClick={handleDelete}>{actionLabel}</AlertDialogAction>
+                    <AlertDialogAction className="bg-red-500 hover:bg-red-700 text-white" onClick={handleDelete}>{actionLabel}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

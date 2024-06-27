@@ -20,7 +20,7 @@ export const getEmployees = async (req: Request, res: Response) => {
 export const getEmployee = async (req: Request, res: Response) => {
   const { id } = req.params;
   const employee = await prisma.employee.findUnique({ where: { id } });
-  res.json(employee);
+  res.json({ employee: employee });
 };
 
 export const createEmployee = async (req: Request, res: Response) => {
@@ -45,7 +45,7 @@ export const createEmployee = async (req: Request, res: Response) => {
   const employee = await prisma.employee.create({
     data: { firstName, lastName, country, city, phone, email },
   });
-  res.json(employee);
+  res.json({ employee: employee });
 };
 
 export const updateEmployee = async (req: Request, res: Response) => {

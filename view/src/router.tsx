@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
+import RegistrationForm from './components/shared/registration-form';
 import { SigninForm } from './components/shared/signin-form';
 import AppLayout from './layout';
-import DashboardPage from './pages/dashboard-page';
-import EmployeePage from './pages/employee-page';
+import CompleteFormPage from './pages/complete-form-page';
+import { default as Dashboard, default as DashboardPage } from './pages/dashboard-page';
 import ErrorPage from './pages/error-page';
-import RegistrationForm from './components/shared/registration-form';
+import UpdateEmployeeForm from './components/shared/update-employee-form';
 
 
 export const router = createBrowserRouter([
@@ -15,22 +16,22 @@ export const router = createBrowserRouter([
         children: [{
             path: "/",
             element: <DashboardPage />
-        }
-            ,
+        },
         {
             path: "employee",
-            element: <RegistrationForm />,
-            children: [
-                {
-                    path: "new",
-                    element: <RegistrationForm />
-                },
-                {
-                    path: "edit/:id",
-                    element: <EmployeePage />
-                },
-            ]
-
+            element: <Dashboard />,
+        },
+        {
+            path: "employee/:id",
+            element: <CompleteFormPage />
+        },
+        {
+            path: "employee/edit/:id",
+            element: <UpdateEmployeeForm />
+        },
+        {
+            path: "/new",
+            element: <RegistrationForm />
         },
         {
             path: "dashboard",
