@@ -47,7 +47,7 @@ export default function RegistrationForm() {
                 description: "Employee created successfully!",
             })
 
-            navigate(`/employee/${response.data.employee.id}`)
+            navigate(`/employee/detail/${response.data.employee.id}`)
         } catch (error) {
             if (error instanceof AxiosError)
                 toast({

@@ -6,7 +6,9 @@ export default function AppLayout() {
     return (
         <section >
             <Header />
-            <Outlet />
+            <main className='min-h-screen'>
+                <Outlet />
+            </main>
             <Footer />
             <Toaster />
         </section>

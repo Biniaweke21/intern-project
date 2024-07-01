@@ -18,33 +18,53 @@ model User {
 }
 
 model Employee {
-  id          String          @id @default(cuid())
-  firstName   String
-  lastName    String
-  country     String
-  city        String
-  phone       String
-  email       String          @unique
-  jobDetailId String?
-  JobDetail   EmployeeDetail? @relation(fields: [jobDetailId], references: [id])
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id             String           @id @default(cuid())
+  firstName      String
+  lastName       String
+  country        String
+  city           String
+  phone          String
+  email          String           @unique
+  jobDetailId    String?
+  employeeDetail EmployeeDetail[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model EmployeeDetail {
-  id              String     @id @default(cuid())
-  position        String
-  department      String
-  baseSalary      Float
-  salaryFrequency Float
-  dateOfHire      DateTime
-  employeeId      String     @unique
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-  Employee        Employee[]
+  id               String           @id @default(cuid())
+  supervisorName   String?
+  employmentType   EmploymentType?
+  employmentStatus EmploymentStatus
+  startDate        DateTime
+  endDate          DateTime?
+  position         String
+  department       String
+  baseSalary       Float
+  salaryFrequency  Float
+  dateOfHire       DateTime
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  Employee         Employee?        @relation(fields: [employeeId], references: [id])
+  employeeId       String?
 }
 
 enum Role {
   HMR
   ADMIN
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+}
+
+enum EmploymentStatus {
+  ACTIVE
+  INACTIVE
+  TERMINATED
+  RETIRED
 }

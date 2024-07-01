@@ -6,6 +6,7 @@ import authMiddleware from "./middlewares/auth";
 import protectedRouter from "./routes/protected.routes";
 import employeeRouter from "./routes/employee.routes";
 import cors from "cors";
+import EmployeeDetailRouter from "./routes/detail.routes";
 const app = express();
 const port = 8080;
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 // register api routes
 app.use("/api/users", userRouter);
 app.use("/api/employee", employeeRouter);
+app.use("/api/employee/detail", EmployeeDetailRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/resources", authMiddleware, protectedRouter);
 
