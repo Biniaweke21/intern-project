@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "@/components/ui/use-toast";
 import { EmployeeType } from "@/types/employee";
 import { AxiosError } from "axios";
-import { FilePenIcon, SearchIcon } from "lucide-react";
+import { Eye, FilePenIcon, SearchIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -112,6 +112,12 @@ const Dashboard = () => {
                                         <Button variant="outline" size="icon">
                                             <FilePenIcon className="h-4 w-4" />
                                             <span className="sr-only">Edit</span>
+                                        </Button>
+                                    </Link>
+                                    <Link to={`/employee/info/${employee.id}`}>
+                                        <Button variant="outline" size="icon">
+                                            <Eye className="h-4 w-4" />
+                                            <span className="sr-only">View</span>
                                         </Button>
                                     </Link>
                                     <AlertDialogForm

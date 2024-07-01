@@ -51,16 +51,13 @@ const getEmployeeDetailById = async (req: Request, res: Response) => {
   try {
     const employeeDetail = await prisma.employeeDetail.findUnique({
       where: { id },
-      include: {
-        Employee: true,
-      },
     });
 
     if (!employeeDetail) {
       return res.status(404).json({ message: "Employee detail not found" });
     }
 
-    res.json(employeeDetail);
+    res.json({ info: employeeDetail });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }

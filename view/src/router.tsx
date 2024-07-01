@@ -10,6 +10,8 @@ import AdminDashboard from './pages/admin-page';
 import CompleteFormPage from './pages/complete-form-page';
 import { default as Dashboard, default as DashboardPage } from './pages/dashboard-page';
 import ErrorPage from './pages/error-page';
+import EmployeeDetailPage from './components/shared/employee-info';
+import UpdateEmployeeDetailForm from './components/shared/update-detail-form';
 
 
 export const router = createBrowserRouter([
@@ -38,8 +40,16 @@ export const router = createBrowserRouter([
             element: <RegistrationForm />
         },
         {
+            path: "/employee/info/:id",
+            element: <EmployeeDetailPage />
+        },
+        {
             path: "/employee/detail/:id",
             element: <EmployeeDetailForm />
+        },
+        {
+            path: "/employee/detail/edit/:id",
+            element: <UpdateEmployeeDetailForm />
         },
         {
             path: "dashboard",

@@ -19,7 +19,10 @@ export const getEmployees = async (req: Request, res: Response) => {
 
 export const getEmployee = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const employee = await prisma.employee.findUnique({ where: { id } });
+  const employee = await prisma.employee.findUnique({
+    where: { id },
+    include: { employeeDetail: true },
+  });
   res.json({ employee: employee });
 };
 
