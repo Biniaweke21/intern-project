@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(HMR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id             String           @id @default(cuid())
+  firstName      String
+  lastName       String
+  country        String
+  city           String
+  phone          String
+  email          String           @unique
+  jobDetailId    String?
+  employeeDetail EmployeeDetail[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model EmployeeDetail {
+  id               String           @id @default(cuid())
+  supervisorName   String?
+  employmentType   EmploymentType?
+  employmentStatus EmploymentStatus
+  startDate        DateTime
+  endDate          DateTime?
+  position         String
+  department       String
+  baseSalary       Float
+  salaryFrequency  Float
+  dateOfHire       DateTime
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  Employee         Employee?        @relation(fields: [employeeId], references: [id])
+  employeeId       String?
+}
+
+enum Role {
+  HMR
+  ADMIN
+}
+
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERN
+}
+
+enum EmploymentStatus {
+  ACTIVE
+  INACTIVE
+  TERMINATED
+  RETIRED
+}
